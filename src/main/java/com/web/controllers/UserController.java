@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-// import com.web.dto.LoginDto;
+import com.web.utils.ParseGender;
 import com.web.dto.RegisterDto;
 import com.web.dto.ResponseHttp;
 import com.web.models.entities.Users;
-import com.web.models.entities.role.UserGender;
 import com.web.services.UserService;
 import com.web.utils.ParseErrors;
 
@@ -36,26 +35,10 @@ public class UserController {
 
    @GetMapping(path = "")
    public String hello(){
-      return "<h1>this api on develompent</h1>";
+      return "<h1>this api on develompent mode</h1>";
    }
 
-   // @PostMapping(path = "/login")
-   // public ResponseEntity<?> login(@RequestBody @Valid LoginDto login, Errors errors) {
-   //    ResponseHttp<Users> responseHttp = new ResponseHttp<Users>();
-   //    if(errors.hasErrors()){
-   //       responseHttp.setMessages(ParseErrors.setErrors(errors));
-   //       responseHttp.setStatus(false);
-   //       responseHttp.setPayload(null);
-   //       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseHttp);
-   //    }
-   //    else{
-   //       Users user = modelMapper.map(login, Users.class);
-   //       responseHttp.setStatus(true);
-   //       responseHttp.getMessages().add("hallo "+user.getName());
-   //       responseHttp.setPayload(this.userService.registration(user));
-   //       return ResponseEntity.status(HttpStatus.OK).body(responseHttp);
-   //    }
-   // }
+
    @PostMapping(path = "/register")
    public ResponseEntity<?> register(@RequestBody @Valid RegisterDto registration, Errors errors){
       ResponseHttp<Users> responseHttp = new ResponseHttp<Users>();
@@ -67,24 +50,11 @@ public class UserController {
       }
       else {
          Users user = modelMapper.map(registration, Users.class);
-         user.setGender(checkGender(registration.getGender()));
+         user.setGender(ParseGender.parse(registration.getGender()));
          responseHttp.getMessages().add("welcome "+user.getName());
          responseHttp.setStatus(true);
          responseHttp.setPayload(userService.registration(user));
          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseHttp);
-      }
-   }
-
-   private UserGender checkGender (String gen){
-      try {
-         if(gen.equalsIgnoreCase("male")) return UserGender.MALE;
-         else if(gen.equalsIgnoreCase("female")) return UserGender.FEMALE;
-         else if(gen.equals(null)) return UserGender.FEMALE;
-         else
-         return UserGender.FEMALE;
-      } catch (NullPointerException e) {
-         System.out.println(e);
-         return null;
       }
    }
 
