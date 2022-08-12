@@ -32,11 +32,19 @@ public class SecurityConfiguration {
 
    @Bean(name = "secureFilterChain  ")
    public SecurityFilterChain filterChain(HttpSecurity http ) throws Exception {
-      http.authorizeRequests().antMatchers(HttpMethod.POST, "/register").permitAll()
-      .and().authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll()
-      .anyRequest().authenticated().and().httpBasic()
-      .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-      .and().authenticationProvider(authenticationProvider()).csrf().disable();
+
+      http.authorizeRequests( autorize -> {
+         try {
+            autorize.antMatchers(HttpMethod.POST, "/register").permitAll()
+            .antMatchers(HttpMethod.POST, "/login").permitAll()
+            .anyRequest().authenticated().and().sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and().authenticationProvider(authenticationProvider()).csrf().disable();
+         } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+         }
+      });
       return http.build();
    }
 

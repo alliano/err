@@ -33,6 +33,12 @@ public class UserController {
    @Autowired
    private ModelMapper modelMapper;
 
+
+   @GetMapping(path = "")
+   public String hello(){
+      return "<h1>this api on develompent</h1>";
+   }
+
    // @PostMapping(path = "/login")
    // public ResponseEntity<?> login(@RequestBody @Valid LoginDto login, Errors errors) {
    //    ResponseHttp<Users> responseHttp = new ResponseHttp<Users>();
