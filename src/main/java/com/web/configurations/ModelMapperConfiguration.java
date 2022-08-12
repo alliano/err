@@ -1,9 +1,8 @@
 package com.web.configurations;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import eye2web.modelmapper.ModelMapper;
 
 @Configuration
 public class ModelMapperConfiguration {
