@@ -38,7 +38,7 @@ public class SecurityConfiguration {
             autorize.antMatchers(HttpMethod.POST, "/register").permitAll()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .antMatchers(HttpMethod.GET, "/").permitAll()
-            .anyRequest().authenticated().and().sessionManagement()
+            .anyRequest().authenticated().and().httpBasic().and().sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and().authenticationProvider(authenticationProvider()).csrf().disable();
          } catch (Exception e) {

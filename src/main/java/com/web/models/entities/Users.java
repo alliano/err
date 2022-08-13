@@ -27,7 +27,7 @@ import lombok.Setter;
 
 
 @Entity @Table(name = "users") @Getter @Setter
-public class Users extends BaseEntity implements Ordered, UserDetails {
+public class Users extends BaseEntity implements UserDetails {
    
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,11 +70,6 @@ public class Users extends BaseEntity implements Ordered, UserDetails {
    }
    public Users(){ 
       super(); 
-   }
-   
-   @Override
-   public int getOrder() {
-      return 1;
    }
 
    @Override

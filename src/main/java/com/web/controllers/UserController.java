@@ -2,7 +2,7 @@ package com.web.controllers;
 
 import java.util.List;
 
-// import org.modelmapper.ModelMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +29,8 @@ public class UserController {
    @Autowired
    private UserService userService;
 
-   // @Autowired
-   // private ModelMapper modelMapper;
+   @Autowired
+   private ModelMapper modelMapper;
 
 
    @GetMapping(path = "")
@@ -56,6 +56,7 @@ public class UserController {
          user.setEmail(registration.getEmail());
          user.setPassword(registration.getPassword());
          user.setGender(ParseGender.parse(registration.getGender()));
+         user.setLevel_user(registration.getLevel_user());
 
          responseHttp.getMessages().add("welcome "+user.getName());
          responseHttp.setStatus(true);
