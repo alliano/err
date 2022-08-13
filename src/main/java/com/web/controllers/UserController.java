@@ -61,7 +61,7 @@ public class UserController {
          responseHttp.getMessages().add("welcome "+user.getName());
          responseHttp.setStatus(true);
          responseHttp.setPayload(userService.registration(user));
-         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseHttp);
+         return ResponseEntity.status(HttpStatus.OK).body(responseHttp);
       }
    }
 
