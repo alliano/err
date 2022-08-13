@@ -34,7 +34,7 @@ public class UserService implements UserDetailsService {
       if (userExist){
          throw new RuntimeException(String.format("user with \s already exist !", user.getEmail()));
       }
-      else if(user.getPassword().equals(null) || user.getEmail().equals(null)) {
+      else if(user.getPassword().isEmpty() || user.getEmail().isEmpty()) {
          throw new RuntimeException("email and password is required");
       }
       else {
@@ -45,7 +45,6 @@ public class UserService implements UserDetailsService {
             throw new RuntimeException(EX.getMessage());
          }
       }
-
    }
    public List<Users> findAll(){
       return userRepository.findAll();

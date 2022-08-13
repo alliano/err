@@ -79,12 +79,12 @@ public class Users extends BaseEntity implements UserDetails {
    }
    @Override
    public String getUsername() {
-      return this.email;
+      return null;
    }
 
    @Override 
    public String getPassword(){
-      return this.password;
+      return null;
    }
 
    @Override

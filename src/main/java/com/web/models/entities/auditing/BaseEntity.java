@@ -22,7 +22,6 @@ public class BaseEntity {
    @Temporal(TemporalType.TIMESTAMP)
    protected SimpleDateFormat created_at ;
 
-
    @LastModifiedDate
    @Temporal(TemporalType.TIMESTAMP)
    protected Date updated_at;
