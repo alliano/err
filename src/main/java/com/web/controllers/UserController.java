@@ -2,7 +2,6 @@ package com.web.controllers;
 
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +28,6 @@ public class UserController {
    @Autowired
    private UserService userService;
 
-   @Autowired
-   private ModelMapper modelMapper;
-
 
    @GetMapping(path = "")
    public String hello(){
@@ -49,8 +45,6 @@ public class UserController {
          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseHttp);
       }
       else {
-         // Users user = modelMapper.map(registration, Users.class);
-         
          Users user = new Users();
          user.setName(registration.getName());
          user.setEmail(registration.getEmail());
