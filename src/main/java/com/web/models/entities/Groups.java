@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.web.models.entities.auditing.BaseEntity;
+import com.web.models.entities.auditing.TrackingDateTime;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -21,7 +21,7 @@ import lombok.Setter;
 
 
 @Setter @Getter @Entity @Table(name ="grups")
-public class Groups extends BaseEntity implements Serializable {
+public class Groups extends TrackingDateTime implements Serializable {
  
    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
    private long id;

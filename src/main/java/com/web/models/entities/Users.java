@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.web.models.entities.auditing.BaseEntity;
+import com.web.models.entities.auditing.TrackingDateTime;
 import com.web.models.entities.role.UserGender;
 import com.web.models.entities.role.UserRole;
 
@@ -26,7 +26,7 @@ import lombok.Setter;
 
 
 @Entity @Table(name = "users") @Getter @Setter
-public class Users extends BaseEntity implements UserDetails {
+public class Users extends TrackingDateTime implements UserDetails {
    
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,6 @@
 package com.web.models.entities.auditing;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,17 +15,17 @@ import lombok.Data;
 @Data
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class BaseEntity {
+public class TrackingDateTime {
    
    @CreatedDate
    @Temporal(TemporalType.TIMESTAMP)
-   protected SimpleDateFormat created_at ;
+   protected LocalDateTime created_at = LocalDateTime.now();
 
    @LastModifiedDate
    @Temporal(TemporalType.TIMESTAMP)
-   protected Date updated_at;
+   protected LocalDateTime updated_at;
 
    @CreatedDate
    @Temporal(TemporalType.TIMESTAMP)
-   protected Date deleted_at;
+   protected LocalDateTime deleted_at;
 }

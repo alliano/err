@@ -1,8 +1,7 @@
 package com.web.models.entities;
 
 import java.io.Serializable;
-
-import com.web.models.entities.auditing.BaseEntity;
+import com.web.models.entities.auditing.TrackingDateTime;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -17,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter @Entity @Table(name = "liked_post")
-public class LikedPost extends BaseEntity implements Serializable {
+public class LikedPost extends TrackingDateTime implements Serializable {
    
    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
    private long id;

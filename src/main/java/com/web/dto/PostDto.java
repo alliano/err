@@ -1,6 +1,5 @@
 package com.web.dto;
 
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -15,5 +14,5 @@ public class PostDto {
    private String image;
 
    @NotNull(message = "user id is required")
-   private long user_id;
+   private long user;
 }

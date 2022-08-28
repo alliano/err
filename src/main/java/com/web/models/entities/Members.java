@@ -2,8 +2,7 @@ package com.web.models.entities;
 
 import java.io.Serializable;
 
-
-import com.web.models.entities.auditing.BaseEntity;
+import com.web.models.entities.auditing.TrackingDateTime;
 import com.web.models.entities.role.UserRole;
 
 import jakarta.persistence.CascadeType;
@@ -21,7 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter @Entity @Table(name = "members")
-public class Members extends BaseEntity implements Serializable {
+public class Members extends TrackingDateTime implements Serializable {
 
    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
    private long id;
