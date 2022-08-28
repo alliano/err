@@ -33,7 +33,7 @@ public class UserPostController {
    }
    @GetMapping(path = "/p/{page}/{size}")
    public Iterable<Posts> findAllPosts(@PathVariable("page") int page, @PathVariable("size") int size) {
-   //   Iterable<Posts> posts = postService.findAllPosts(size, page, "asc");
+     Iterable<Posts> posts = postService.findAllPosts(size, page, "asc");
 
 
      Users user1 = new Users();
@@ -99,7 +99,7 @@ public class UserPostController {
         System.out.println(posts2.getMessage());
         System.out.println(posts2.getUser().getName());
      }
-      return dataDumy;
+      return posts;
    }
 
    @GetMapping(path = "/all")

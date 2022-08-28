@@ -28,7 +28,7 @@ public class Posts extends TrackingDateTime implements Serializable {
 
    @NotNull
    @ManyToOne(targetEntity = Users.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-   @JoinColumn(name = "user_id", insertable = false ,updatable = false)
+   @JoinColumn(name = "user_id", insertable = true ,updatable = false)
    private Users user; 
 
    @Column(name = "message_content", length = 2000, nullable = false)

@@ -26,9 +26,9 @@ public class UserProfileController {
           this.modelMapper = modelMapper;
      }
 
-     // @PostMapping(path = "/update")
-     // public Users updateUser(@RequestBody UpdateUserDto user,@Valid Errors error){
-     //      Users resultMapUsers = modelMapper.map(user, Users.class);
-     //      return this.userService.updatUsers(resultMapUsers);
-     // }
+     @PostMapping(path = "/update")
+     public Users updateUser(@RequestBody UpdateUserDto user,@Valid Errors error){
+          Users resultMapUsers = modelMapper.map(user, Users.class);
+          return this.userService.updatUsers(resultMapUsers);
+     }
 }
