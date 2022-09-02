@@ -50,7 +50,7 @@ public class Users extends TrackingDateTime implements UserDetails {
    @Column(name = "profile" ,length = 255, nullable = true)
    private String profile;
 
-   @Column(name = "profile_cover" ,length = 255, nullable = true)
+   @Column(name = "profile_cover" ,length = 255, nullable = true, insertable = true, updatable = true)
    private String profile_cover;
 
    @ManyToMany(targetEntity = Groups.class, mappedBy = "users")

@@ -12,8 +12,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      @Override
      public void addResourceHandlers(ResourceHandlerRegistry registry) {
          registry.addResourceHandler("/posts/**").addResourceLocations("/posts/");
-         registry.addResourceHandler("/**").addResourceLocations("/");
-          WebMvcConfigurer.super.addResourceHandlers(registry);
+         registry.addResourceHandler("/profile/**").addResourceLocations("/**");
+         WebMvcConfigurer.super.addResourceHandlers(registry);
      }
      
 }

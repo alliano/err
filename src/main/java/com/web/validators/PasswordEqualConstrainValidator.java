@@ -12,11 +12,11 @@ public class PasswordEqualConstrainValidator implements ConstraintValidator<Pass
    public boolean isValid(Object value, ConstraintValidatorContext context) {
       try {
          RegisterDto register = (RegisterDto) value;
-         boolean isNotEmpty = (register.getPassword().equals(null) || register.getRetypePass().equals(null) ? true : false);
+         boolean isNotEmpty = (register.getPassword().equals(null) || register.getConfirmationPassword().equals(null) ? true : false);
       if(isNotEmpty){
          return  false;
       }
-      else if(register.getPassword().equals(register.getRetypePass())){
+      else if(register.getPassword().equals(register.getConfirmationPassword())){
          return true;
       }
       else {

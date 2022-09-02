@@ -10,14 +10,10 @@ public class UpdateUserDto {
      private long id;
 
      private String name;
+     
+     private String profile; 
 
-     private String email;
-
-     private String password;
-
-     private String prfile; 
-
-     private String cover;
+     private String profile_cover;
 
      private UserRole level_user = UserRole.USER;
 }

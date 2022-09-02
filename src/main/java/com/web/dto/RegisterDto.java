@@ -27,7 +27,7 @@ public class RegisterDto {
    private String password;
 
    @NotEmpty(message = "please fill confirmation password !")
-   private String retypePass;
+   private String confirmationPassword;
 
    @NotEmpty(message = "gender is required ! ")
    private String gender;

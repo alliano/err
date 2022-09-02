@@ -17,7 +17,5 @@ public interface UserPostRepository extends JpaRepository<Posts, Long> {
      @Query(name = "crete", value = "insert into posts (image, message_content, user_id) values (:image, :message_content, :user_id)", nativeQuery = true)
      public void postStatus(@Param(value = "image") String image, @Param(value = "message_content") String message_content, @Param(value = "user_id") long user_id);
 
-     // @Query(value = "select posts.message_content as message, posts.image as image, users.name as name from posts inner join on (posts.user_id = users.id) Order by posts.id \n-- #pageable\n", nativeQuery = true)
-     @Query(value = "select * from posts", nativeQuery = true)
-     public Page<Posts> findAllPosts(Pageable pageable);
+     public Page<Posts> findAll(Pageable pageable);
 }

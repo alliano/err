@@ -2,7 +2,6 @@ package com.web.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,15 +10,19 @@ import org.springframework.stereotype.Service;
 
 import com.web.models.entities.Users;
 import com.web.models.repositories.UserRepository;
+import com.web.utils.GetUser;
 
 @Service
 public class UserService implements UserDetailsService {
 
-   @Autowired
    private UserRepository userRepository;
 
-   @Autowired
    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+   public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder){
+      this.userRepository = userRepository;
+      this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+   }
 
    @Override
    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -51,29 +54,32 @@ public class UserService implements UserDetailsService {
    }
 
    /**
-    * update provile
+    * update profile
     * @return
     */
+   @jakarta.transaction.Transactional
    public Users updatUsers( Users user){
       Users dataUser = userRepository.findById(user.getId()).get();
       try{
-         if(user.getName().isEmpty()) dataUser.setName(user.getName());
-         else if(user.getEmail() != null) dataUser.setEmail(user.getEmail());
-         else if(user.getPassword() != null) dataUser.setEmail(user.getEmail());
-         else if(user.getPassword() != null) dataUser.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
-         else if(user.getProfile() != null) dataUser.setProfile(user.getProfile());
-         else if(user.getProfile_cover() == null) dataUser.setProfile_cover(user.getProfile_cover());
-
-         System.out.println(dataUser.getEmail());
-         System.out.println(dataUser.getName());
-         System.out.println(dataUser.getProfile());
-
-         userRepository.updateUserProfile(user.getName(), user.getEmail(), user.getPassword(), user.getProfile(), user.getProfile_cover(), user.getId());
-         return userRepository.findById(user.getId()).get();
+         if(user.getName() != null) dataUser.setName(user.getName()); 
+         if(user.getProfile() != null) dataUser.setProfile(user.getProfile());
+         if(user.getProfile_cover() != null) dataUser.setProfile_cover(user.getProfile_cover());
+         return userRepository.save(dataUser);
       }catch(NullPointerException Npe){
-         System.out.println("b aja ngntd");
-         return null;
+         System.out.println(Npe.getMessage());
+         throw new NullPointerException("datanya null coba cek di UserService.java ");
       }
+   }
+
+   public void changePassword(String newPassword){
+      System.out.println("\n\n\n\n\n"+newPassword+"\n\n");
+      Users user = GetUser.GetMe().get();
+      // cek kekuatan password
+
+      //klo kuat save password
+
+      // klo ga kuat batalkan changePassword
+      System.out.println(user.getEmail());
    }
    
 }

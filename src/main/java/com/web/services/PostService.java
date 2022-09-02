@@ -29,7 +29,7 @@ public class PostService {
 
    public Iterable<Posts> findAllPosts(int size, int page, String sort){
       Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
-      Page<Posts> posts = userPostRepository.findAllPosts(pageable);
+      Page<Posts> posts = userPostRepository.findAll(pageable);
       return posts;
    }
 
