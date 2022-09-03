@@ -27,12 +27,12 @@ import lombok.Setter;
 
 @Entity @Table(name = "users") @Getter @Setter
 public class Users extends TrackingDateTime implements UserDetails {
-   
+
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @Column(name = "name", length = 50, nullable = true, unique = false)
+   @Column(name = "name", length = 50, nullable = false, unique = false)
    private String name;
 
    @Column(name = "email", length = 50, nullable = false, unique = true)
@@ -67,8 +67,8 @@ public class Users extends TrackingDateTime implements UserDetails {
       this.profile = profile;
       this.profile_cover = profile_cover;
    }
-   public Users(){ 
-      super(); 
+   public Users(){
+      super();
    }
 
    @Override
@@ -81,7 +81,7 @@ public class Users extends TrackingDateTime implements UserDetails {
       return this.email;
    }
 
-   @Override 
+   @Override
    public String getPassword(){
       return this.password;
    }

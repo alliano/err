@@ -13,7 +13,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      public void addResourceHandlers(ResourceHandlerRegistry registry) {
          registry.addResourceHandler("/posts/**").addResourceLocations("/posts/");
          registry.addResourceHandler("/profile/**").addResourceLocations("/**");
+         registry.addResourceHandler("/update/**").addResourceLocations("/update/**");
          WebMvcConfigurer.super.addResourceHandlers(registry);
      }
-     
+
 }

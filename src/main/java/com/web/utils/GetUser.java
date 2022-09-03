@@ -8,7 +8,7 @@ import com.web.models.entities.Users;
 
 public class GetUser {
 
-     public static Optional<Users> GetMe() {
+     public static Optional<Users> getMe() {
           return Optional.of( (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
      }
 

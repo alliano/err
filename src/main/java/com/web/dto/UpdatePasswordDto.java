@@ -12,8 +12,12 @@ public class UpdatePasswordDto {
 
      @Size(min = 8,message = "password can't less from 8 characters!")
      @NotEmpty
+     private String lastPassword;
+
+     @NotEmpty(message = "new password is required!")
      private String password;
 
-     @NotEmpty
+     @NotEmpty(message = "confirmation password is required!")
      private String confirmationPassword;
 }
+

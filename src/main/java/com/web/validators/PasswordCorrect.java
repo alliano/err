@@ -9,15 +9,14 @@ import java.lang.annotation.Target;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
-@Target(ElementType.FIELD)
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = IsEmailAlreadyExist.class)
-public @interface EmailExist {
+@Constraint(validatedBy = IsPasswordCorrect.class)
+public @interface PasswordCorrect {
+	String message();
 
-   String message();
+	Class<?>[] groups()default {};
 
-   Class<?>[] groups() default {};
-
-   Class<? extends Payload>[] payload() default {};
+ Class<? extends Payload>[] payload() default {};
 }
